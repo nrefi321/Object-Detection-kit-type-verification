@@ -1,0 +1,6 @@
+# m h  dom mon dow   command
+
+@reboot sleep 80 &&  /usr/bin/python3 /home/vpd/Desktop/BG/BackGrinding_check/oled_module.py >> /home/vpd/Desktop/BG/log_oled.log 2>&1
+@reboot sleep 30 && cd /home/vpd/Desktop/BG/yolov7 && /usr/bin/python3 main_AI.py >> /home/vpd/Desktop/BG/log_AI.log 2>&1
+@reboot sleep 200 && /usr/bin/python3 /home/vpd/Desktop/BG/BackGrinding_check/StateMachine.py >> /home/vpd/Desktop/BG/log_main.log 2>&1
+@reboot sleep 20 && /usr/bin/python3 /home/vpd/Desktop/BG/BackGrinding_check/updateTime.py >> /home/vpd/Desktop/BG/log_updatetime.log 2>&1
