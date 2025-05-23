@@ -1,5 +1,7 @@
 import socket
 import netifaces as ni
+# import fcntl
+# import struct
 
 class GetIPAddress:
     def __init__(self):
@@ -23,6 +25,41 @@ class GetIPAddress:
             return ip
         except:
             return '127.0.0.1'
+    
+
+    def get_local_ip():
+        try:
+            for iface in ni.interfaces():
+                addrs = ni.ifaddresses(iface)
+                if ni.AF_INET in addrs:
+                    for link in addrs[ni.AF_INET]:
+                        ip = link.get('addr')
+                        if ip and not ip.startswith("127."):
+                            return ip
+        except Exception as e:
+            print(f"Error getting IP: {e}")
+        return '127.0.0.1'
+    
+    # def get_ip_address(self, interface):
+    #     try:
+    #         sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    #         ip = fcntl.ioctl(
+    #             sock.fileno(),
+    #             0x8915,  # SIOCGIFADDR
+    #             struct.pack('256s', interface[:15].encode('utf-8'))
+    #         )[20:24]
+    #         return socket.inet_ntoa(ip)
+    #     except Exception:
+    #         return None
+
+    # def get_local_ip(self):
+    #     ip = self.get_ip_address('eth0')
+    #     if ip:
+    #         return ip
+    #     ip = self.get_ip_address('wlan0')
+    #     if ip:
+    #         return ip
+    #     return '172.0.0.1'
 
 if __name__ == '__main__':
     a = GetIPAddress()
