@@ -1,0 +1,11 @@
+{
+  "useAI": true,
+  "hardwareConnect": false,
+  "inputChannel": 3,
+  "outputChannel": 0,
+  "debouncetime": 0.5,
+  "cameraAOI": {
+    "width": 1920,
+    "height": 1080
+  }
+}
