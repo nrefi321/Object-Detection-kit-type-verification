@@ -1,0 +1,1 @@
+CreateObject("Wscript.Shell").Run "D:\fern\project_Fern\Backgrinding_jetson\BG-ui\guiBG.bat",0,True
